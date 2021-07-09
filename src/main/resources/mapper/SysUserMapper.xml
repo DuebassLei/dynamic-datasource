@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iwhale.dynamic.mapper.SysUserMapper">
+  <resultMap id="BaseResultMap" type="com.iwhale.dynamic.model.SysUser">
+    <id column="USER_ID" jdbcType="DECIMAL" property="userId" />
+    <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+    <result column="USER_CODE" jdbcType="VARCHAR" property="password" />
+    <result column="EMPLOYEE_ID" jdbcType="DECIMAL" property="employeeId" />
+    <result column="USER_SALT" jdbcType="DECIMAL" property="userSalt" />
+    <result column="USER_AVATAR" jdbcType="VARCHAR" property="userAvatar" />
+    <result column="ENABLED" jdbcType="DECIMAL" property="enabled" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="UPDATE_DATE" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="NOTE" jdbcType="VARCHAR" property="note" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="USER_PHONE" jdbcType="DECIMAL" property="userPhone" />
+    <result column="USER_ADDRESS" jdbcType="VARCHAR" property="userAddress" />
+    <result column="USER_CODE" jdbcType="VARCHAR" property="userCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    USER_ID, USER_NAME, EMPLOYEE_ID, USER_SALT, USER_AVATAR, ENABLED, CREATE_DATE, UPDATE_DATE,
+    NOTE, EMAIL, USER_PHONE, USER_ADDRESS, USER_CODE
+  </sql>
+
+  <select id="selectSysUserPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select * from sys_user
+  </select>
+
+  <select id="queryUserByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select t.* from sys_user t where t.user_code = #{userCode}
+  </select>
+
+
+</mapper>
